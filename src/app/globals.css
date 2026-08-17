@@ -1,0 +1,457 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Variables de base
+   ========================================================= */
+
+:root {
+  --background: #f7f7f8;
+  --foreground: #18181b;
+}
+
+/* =========================================================
+   Mode sombre
+   ========================================================= */
+
+html.dark {
+  --background: #09090b;
+  --foreground: #ededed;
+}
+
+/* =========================================================
+   Mode clair
+   ========================================================= */
+
+html.light {
+  --background: #f7f7f8;
+  --foreground: #18181b;
+}
+
+/* =========================================================
+   Page
+   ========================================================= */
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* =========================================================
+   Mode clair — interface Patrimoine+
+   ========================================================= */
+
+html.light body {
+  background: #f7f7f8;
+  color: #18181b;
+}
+
+/* Fonds principaux */
+
+html.light .bg-zinc-950 {
+  background-color: #f7f7f8 !important;
+}
+
+html.light .bg-zinc-900 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-zinc-800 {
+  background-color: #f4f4f5 !important;
+}
+
+html.light .bg-zinc-700 {
+  background-color: #e4e4e7 !important;
+}
+
+/* Textes */
+
+html.light .text-white {
+  color: #18181b !important;
+}
+
+html.light .text-zinc-300 {
+  color: #3f3f46 !important;
+}
+
+html.light .text-zinc-400 {
+  color: #52525b !important;
+}
+
+html.light .text-zinc-500 {
+  color: #71717a !important;
+}
+
+html.light .text-zinc-600 {
+  color: #a1a1aa !important;
+}
+
+/* Bordures */
+
+html.light .border-zinc-800 {
+  border-color: #e4e4e7 !important;
+}
+
+html.light .border-zinc-700 {
+  border-color: #d4d4d8 !important;
+}
+
+/* Champs */
+
+html.light input,
+html.light textarea,
+html.light select {
+  color: #18181b;
+}
+
+/* Survol */
+
+html.light .hover\:bg-zinc-800:hover {
+  background-color: #e4e4e7 !important;
+}
+
+html.light .hover\:bg-zinc-700:hover {
+  background-color: #d4d4d8 !important;
+}
+
+/* =========================================================
+   Sélection
+   ========================================================= */
+
+::selection {
+  background: #2563eb;
+  color: white;
+}
+
+/* =========================================================
+   Transitions
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   Couleur principale
+   ========================================================= */
+
+html.accent-blue {
+  --accent-color: #2563eb;
+  --accent-color-hover: #1d4ed8;
+}
+
+html.accent-violet {
+  --accent-color: #8b5cf6;
+  --accent-color-hover: #7c3aed;
+}
+
+html.accent-green {
+  --accent-color: #22c55e;
+  --accent-color-hover: #16a34a;
+}
+
+html.accent-orange {
+  --accent-color: #f97316;
+  --accent-color-hover: #ea580c;
+}
+
+/* =========================================================
+   Boutons et accents principaux
+   ========================================================= */
+
+html .accent-bg {
+  background-color: var(--accent-color);
+}
+
+html .accent-bg:hover {
+  background-color: var(--accent-color-hover);
+}
+
+/* Texte accentué */
+
+html .accent-text {
+  color: var(--accent-color);
+}
+
+/* Bordure accentuée */
+
+html .accent-border {
+  border-color: var(--accent-color);
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+
+/*
+  Le bouton ☰ de la Sidebar est en position fixed.
+  Il ne prend donc pas de place dans la mise en page.
+
+  On réserve automatiquement de l'espace au-dessus
+  de toutes les pages sur mobile.
+
+  Ainsi, toutes les pages bénéficient de la correction :
+  Dashboard
+  Comptes
+  Budget
+  Investissements
+  Statistiques
+  Simulateurs
+  Objectifs
+  Assistant IA
+  Paramètres
+*/
+
+@media (max-width: 767px) {
+  main {
+    padding-top: 5rem !important;
+  }
+}
+
+/* =========================================================
+   Éviter les débordements horizontaux sur mobile
+   ========================================================= */
+
+@media (max-width: 767px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+/* =========================================================
+   MISE EN PAGE
+   ========================================================= */
+
+/* Standard = comportement actuel */
+.layout-standard {
+  --layout-main-padding: 2.5rem;
+  --layout-card-padding: 2rem;
+  --layout-section-gap: 1.5rem;
+}
+
+/* Compact = plus d'informations à l'écran */
+.layout-compact {
+  --layout-main-padding: 1.5rem;
+  --layout-card-padding: 1.25rem;
+  --layout-section-gap: 1rem;
+}
+
+/* Aéré = davantage d'espace */
+.layout-spacious {
+  --layout-main-padding: 3.5rem;
+  --layout-card-padding: 2.75rem;
+  --layout-section-gap: 2.5rem;
+}
+
+
+/* Contenu principal */
+.layout-compact main > div:not([class*="sidebar"]) {
+  padding: var(--layout-main-padding);
+}
+
+.layout-spacious main > div:not([class*="sidebar"]) {
+  padding: var(--layout-main-padding);
+}
+
+
+/* Cartes principales */
+.layout-compact .rounded-3xl {
+  padding: var(--layout-card-padding);
+}
+
+.layout-spacious .rounded-3xl {
+  padding: var(--layout-card-padding);
+}
+
+
+/* Espacement vertical entre sections */
+.layout-compact .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: var(--layout-section-gap);
+}
+
+.layout-spacious .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: var(--layout-section-gap);
+}
+/* =========================================================
+   MISE EN PAGE GLOBALE DE PATRIMOINE+
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   STANDARD
+   --------------------------------------------------------- */
+
+html.layout-standard {
+  --page-padding: 2.5rem;
+  --section-spacing: 1.5rem;
+}
+
+/* ---------------------------------------------------------
+   COMPACT
+   --------------------------------------------------------- */
+
+html.layout-compact {
+  --page-padding: 1.5rem;
+  --section-spacing: 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   AÉRÉ
+   --------------------------------------------------------- */
+
+html.layout-spacious {
+  --page-padding: 3.5rem;
+  --section-spacing: 2.5rem;
+}
+
+/* =========================================================
+   CONTENU PRINCIPAL
+   ========================================================= */
+
+/*
+   Toutes les pages Patrimoine+ utilisent :
+   <main>
+     <Sidebar />
+     <div className="flex-1 ...">
+   </main>
+
+   On modifie donc le padding du contenu principal
+   sans toucher à la Sidebar.
+*/
+
+html.layout-compact main > div.flex-1 {
+  padding: var(--page-padding) !important;
+}
+
+html.layout-spacious main > div.flex-1 {
+  padding: var(--page-padding) !important;
+}
+
+/* =========================================================
+   ESPACEMENTS ENTRE SECTIONS
+   ========================================================= */
+
+html.layout-compact main .space-y-6 > * + * {
+  margin-top: var(--section-spacing) !important;
+}
+
+html.layout-spacious main .space-y-6 > * + * {
+  margin-top: var(--section-spacing) !important;
+}
+
+/* =========================================================
+   MARGES VERTICALES COURANTES
+   ========================================================= */
+
+html.layout-compact main .mt-12 {
+  margin-top: 1.5rem !important;
+}
+
+html.layout-compact main .mt-10 {
+  margin-top: 1.25rem !important;
+}
+
+html.layout-compact main .mt-8 {
+  margin-top: 1rem !important;
+}
+
+html.layout-compact main .mt-6 {
+  margin-top: 0.75rem !important;
+}
+
+html.layout-compact main .mb-10 {
+  margin-bottom: 1.5rem !important;
+}
+
+html.layout-compact main .mb-8 {
+  margin-bottom: 1.25rem !important;
+}
+
+html.layout-compact main .mb-6 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Aéré */
+
+html.layout-spacious main .mt-12 {
+  margin-top: 3.5rem !important;
+}
+
+html.layout-spacious main .mt-10 {
+  margin-top: 3rem !important;
+}
+
+html.layout-spacious main .mt-8 {
+  margin-top: 2.5rem !important;
+}
+
+html.layout-spacious main .mt-6 {
+  margin-top: 2rem !important;
+}
+
+html.layout-spacious main .mb-10 {
+  margin-bottom: 3rem !important;
+}
+
+html.layout-spacious main .mb-8 {
+  margin-bottom: 2.5rem !important;
+}
+
+html.layout-spacious main .mb-6 {
+  margin-bottom: 2rem !important;
+}
+
+/* =========================================================
+   ESPACEMENT DES GRILLES
+   ========================================================= */
+
+html.layout-compact main .gap-6 {
+  gap: 1rem !important;
+}
+
+html.layout-compact main .gap-5 {
+  gap: 0.75rem !important;
+}
+
+html.layout-spacious main .gap-6 {
+  gap: 2rem !important;
+}
+
+html.layout-spacious main .gap-5 {
+  gap: 1.5rem !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+/*
+   On laisse le responsive mobile existant tranquille.
+   La correction de padding du contenu principal ne s'applique
+   qu'à partir de 768px.
+*/
+
+@media (max-width: 767px) {
+  html.layout-compact main > div.flex-1,
+  html.layout-spacious main > div.flex-1 {
+    padding: 1.25rem !important;
+    padding-top: 5rem !important;
+  }
+
+  html.layout-compact main .gap-6,
+  html.layout-spacious main .gap-6,
+  html.layout-compact main .gap-5,
+  html.layout-spacious main .gap-5 {
+    gap: 1rem !important;
+  }
+}
